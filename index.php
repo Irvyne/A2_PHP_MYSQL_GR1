@@ -6,5 +6,9 @@
 
 $config = include __DIR__.'/config/config.php';
 include __DIR__.'/functions/database.fn.php';
+include __DIR__.'/functions/article.fn.php';
 
 $link = getDatabaseLink($config['database']);
+
+removeArticle($link, 1);
+
