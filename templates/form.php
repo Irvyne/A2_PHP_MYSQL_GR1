@@ -3,9 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
+    <style>
+        .error {
+            background-color: red;
+        }
+        .success {
+            background-color: green;
+        }
+    </style>
 </head>
 <body>
-<?php var_dump($_POST); ?>
+
+<?php
+if (isset($errors) && sizeof($errors) > 0) {
+    echo '<ul class="error">';
+    foreach ($errors as $error) {
+        echo '<li>'.$error.'</li>';
+    }
+    echo '</ul>';
+}
+if (!empty($success)) {
+    echo '<p class="success">'.$success.'</p>';
+}
+?>
+
 <form action="" method="post">
     <label for="title">Title: </label>
     <input id="title" name="title" type="text" placeholder="Title" required autofocus>
@@ -33,7 +54,7 @@
     <label for="tag3">Fish: </label>
     <input id="tag3" name="tags[]" type="checkbox" value="3">
     <br>
-    <input type="submit" value="Submit Me">
+    <input name="submitArticle" type="submit" value="Submit Me">
 </form>
 
 </body>
